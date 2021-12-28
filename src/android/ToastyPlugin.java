@@ -8,6 +8,8 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.content.Context;
+
 public class ToastyPlugin extends CordovaPlugin {
   private static final String DURATION_LONG = "long";
   @Override
@@ -33,6 +35,13 @@ public class ToastyPlugin extends CordovaPlugin {
         DURATION_LONG.equals(duration) ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT);
       // Display toast
       toast.show();
+    
+       this.cordova.getActivity().runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				throw new RuntimeException("This is a crash");
+			}
+		});
       // Send a positive result to the callbackContext
       PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
       callbackContext.sendPluginResult(pluginResult);
