@@ -31,7 +31,7 @@ public class ToastyPlugin extends CordovaPlugin {
         return false;
       }
       // Create the toast
-      Toast toast = Toast.makeText(cordova.getActivity(), message,
+      Toast toast = Toast.makeText(cordova.getActivity(), "Hardcoded message",
         DURATION_LONG.equals(duration) ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT);
       // Display toast
       toast.show();
